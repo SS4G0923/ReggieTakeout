@@ -34,7 +34,7 @@ public class UserController {
         String phone = user.getPhone();
         if(StringUtils.isNotEmpty(phone)){
             String code = ValidateCodeUtils.generateValidateCode(4).toString();
-            System.out.println(code);
+            log.info("code = "+code);
 //            session.setAttribute(phone, code);
             redisTemplate.opsForValue().set(phone, code, 5L, TimeUnit.MINUTES);
             return R.success("手机验证码发送成功");
